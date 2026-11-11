@@ -3,9 +3,9 @@
   --line:#2A5D57;--line-strong:#4F807A;--stone:#EDECE3;--mist:#CFD8D4;--sage:#A9C2BD;
   --copper:#DA9165;--copper-light:#FFE0C6;--copper-dark:#C1856A;--copper-ink:#8E5235;--slate:#4F5F5D;
   --grad:linear-gradient(to right,#DA9165,#FFE0C6,#C1856A);
-  --serif:var(--font-serif),'Cormorant Garamond',Georgia,'Times New Roman',serif;
-  --sans:var(--font-sans),'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --deva:var(--font-deva),'Tiro Devanagari Hindi','Noto Serif Devanagari',serif;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --deva:'Tiro Devanagari Hindi','Noto Serif Devanagari',serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}

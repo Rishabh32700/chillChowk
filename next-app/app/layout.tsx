@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Jost, Tiro_Devanagari_Hindi } from "next/font/google";
 import Header from "@/components/Header";
 import Reveal from "@/components/Reveal";
 import { Footer, Newsletter, OrderBar } from "@/components/SiteChrome";
@@ -7,9 +6,10 @@ import { JsonLd } from "@/components/ui";
 import { SITE_URL, cafeJsonLd } from "@/lib/site";
 import "./globals.css";
 
-const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500"], style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
-const sans = Jost({ subsets: ["latin"], weight: ["300", "400", "500"], variable: "--font-sans", display: "swap" });
-const deva = Tiro_Devanagari_Hindi({ subsets: ["devanagari", "latin"], weight: "400", variable: "--font-deva", display: "swap" });
+// Loaded from Google Fonts at runtime (as the original site did). next/font/google was dropped
+// because its build-time download crashed on Vercel when Google returned extension-less font URLs.
+const FONTS_URL =
+  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi&display=swap";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -22,7 +22,13 @@ export const viewport: Viewport = { themeColor: "#0F413C" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${serif.variable} ${sans.variable} ${deva.variable}`}>
+    <html lang="en-IN">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link rel="stylesheet" href={FONTS_URL} />
+      </head>
       <body>
         <JsonLd data={cafeJsonLd} />
         <a className="skip" href="#main">Skip to content</a>
