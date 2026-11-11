@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chillchowk.vercel.app/sitemap.xml
